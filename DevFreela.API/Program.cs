@@ -1,8 +1,6 @@
 using DevFreela.API.ExceptionHandler;
 using DevFreela.Application;
 using DevFreela.Infrastructure;
-using DevFreela.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +9,8 @@ builder.Services.AddApplication().AddInfrastructure(builder.Configuration);
 
 builder.Services.AddExceptionHandler<ApiExceptionHandler>();
 builder.Services.AddProblemDetails();
+
+builder.Services.AddMemoryCache();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
